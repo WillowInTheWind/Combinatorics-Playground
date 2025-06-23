@@ -1,0 +1,12 @@
+<div class = "wrapper">
+  <div  class = "objectwrapper">
+    <ul class = "styless" *ngFor="let graphic of classOneGraphics">
+      <app-object-card  (object)="cardSelected($event)" [index] = "classOneGraphics.indexOf(graphic)"  [graphic] = "graphic" ></app-object-card>
+    </ul>
+  </div>
+  <div  class = "objectwrapper">
+    <ul class = "styless" *ngFor="let graphic of classTwoGraphic">
+      <app-object-card  (object)="cardSelected($event)" [index] = "classTwoGraphic.indexOf(graphic)"  [graphic] = "graphic" ></app-object-card>
+    </ul>
+  </div>
+</div>

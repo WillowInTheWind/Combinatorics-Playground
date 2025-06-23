@@ -1,11 +1,3 @@
-<div class = "case">
-  <ul class = "styless">
-    <li class ="mx">
-      <button class = "mxitem" >
-        <div class = "title">
-te<!--          <app-tikz-renderer></app-tikz-renderer>-->
-        </div>
-      </button>
-  </ul>
-</div>
-
+<button (click) = "selectCard()">
+<app-tikz-renderer [style.background-color]="divColor" class = "mxitem case" #renderer cdkDragBoundary = ".wrapper" [cdkDragFreeDragPosition]="dragPosition"    [index]="index" [graphic]="graphic" cdkDrag></app-tikz-renderer>
+</button>
