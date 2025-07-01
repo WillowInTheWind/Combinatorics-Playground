@@ -20,22 +20,25 @@ import { EventEmitter } from '@angular/core';
   styleUrl: './object-card.component.css'
 })
 export class ObjectCardComponent {
-  objectInfo: CombinatorialObjectCard  = {index :0, n : 0, r:0, description:"pixel strip"}
-  @Output() public object = new EventEmitter<any>();
-  @Input() graphic: string;
-  selected  = false;
+  @Input({ required: true }) objectInfo!: CombinatorialObjectCard;
+  @Input() graphic!: string;
   @ViewChild('renderer') button!: ElementRef;
+  @Input() listposition: number;
+
   @Input() index: number | undefined;
+  @Output() public object = new EventEmitter<any>();
+
   dragPosition = {x: 0, y: 0};
+  line: any|undefined;
   divColor = "#f2f2f2";
+  selected  = false;
+
+
   constructor(private renderer2: Renderer2,
-              @Inject(DOCUMENT) private document: Document) {
+              @Inject(DOCUMENT) private document: Document,
+              private ref: ElementRef) {
     // @ts-ignore
-    if (this.graphic == undefined) {
-      this.graphic ="  \\begin{tikzpicture}\n" +
-        "    \\draw (0,0) circle (1in);\n" +
-        "  \\end{tikzpicture}"
-    }
+      this.listposition = 0;
 
   }
   ngOnInit() {
@@ -43,18 +46,23 @@ export class ObjectCardComponent {
   }
 
   selectCard() :void {
-    if (!this.selected ) {
-    this.divColor = "#ababab";
-    this.selected = true;
-    }
-    else {
-    this.selected = false;
-    this.divColor = "#f2f2f2";
-    }
-    this.object.emit(this.objectInfo);
+    // if (!this.selected ) {
+    //   this.divColor = "#ababab";
+    //   this.selected = true;
+    // }
+    // else {
+    //   this.selected = false;
+    //   this.divColor = "#f2f2f2";
+    // }
+    // this.object.emit(this.ref);
   }
-
+  linemanager() {
+    if (this.selected) {
+      console.log("test");
+    }
+  }
 }
+
 
 export interface CombinatorialObjectCard {
   index: number;

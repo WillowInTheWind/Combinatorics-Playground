@@ -1,12 +1,63 @@
+<div class = "titlepage">
+  <a href = "/" class = "title">COMBINATORICS PLAYGROUND WORKING TITLE</a>
+  <div class = "options">
+    <a href="/bijection"  class = "option">
+      BIJECTIONS
+    </a>
+    <a href = "/sorting" class = "option">
+      SORTING
+    </a>
+    <a class = "option">
+      FREE EXPLORATION
+    </a>
+    <a class = "option">
+      DATABASE
+    </a>
+  </div>
+</div>
+
+<div class = "page">
+
+  <div class = "selectors">
+  <select class="objectdropdown" >
+    <option value="" disabled>Choose an Object</option>
+    <option>placeholder 1</option>
+    <option>placeholder 2</option>
+  </select>
+  <select class="classdropdown" >
+    <option value="" disabled>Choose a Class</option>
+    <option>Catalan Numbers</option>
+    <option>Fibbonacci Numbers</option>
+    <option>Binomial Coefficents</option>
+
+  </select>
+  <select class="objectdropdown" >
+    <option value="" disabled>Choose an Object</option>
+<option>placeholder 1</option>
+    <option>placeholder 2</option>
+
+  </select>
+</div>
 <div class = "wrapper">
   <div  class = "objectwrapper">
     <ul class = "styless" *ngFor="let graphic of classOneGraphics">
-      <app-object-card  (object)="cardSelected($event)" [index] = "classOneGraphics.indexOf(graphic)"  [graphic] = "graphic" ></app-object-card>
+      <app-object-card
+        [listposition] = "1"
+        [objectInfo]="{description: 'test',index: 1, n:0,r:0}"
+        [id]  ="'oneid-' + classOneGraphics.indexOf(graphic)"
+        (object)="cardSelected($event)"
+        [index] = "classOneGraphics.indexOf(graphic)"
+        [graphic] = "graphic" ></app-object-card>
     </ul>
   </div>
   <div  class = "objectwrapper">
     <ul class = "styless" *ngFor="let graphic of classTwoGraphic">
-      <app-object-card  (object)="cardSelected($event)" [index] = "classTwoGraphic.indexOf(graphic)"  [graphic] = "graphic" ></app-object-card>
+      <app-object-card (object)="cardSelected($event)"
+                       [listposition]="2"
+                       [index] = "classTwoGraphic.indexOf(graphic)"
+                       [graphic] = "graphic"
+                       [objectInfo]="{description: 'test',index: 1, n:0,r:0}"></app-object-card>
     </ul>
   </div>
+</div>
 </div>

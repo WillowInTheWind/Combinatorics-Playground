@@ -1,0 +1,50 @@
+.title {
+  font-size: 3em;
+  text-align: center;
+  padding: 5% 20%;
+}
+.titlepage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background:  #0057b7;
+  color: white;
+  padding: 5%
+}
+.option {
+   font-size: 1.5em;
+  padding: 10px;
+  border-bottom: 1px solid white;
+}
+.options {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  text-underline: none;
+  color: inherit;
+}
+a:hover {
+  text-decoration: none;
+  text-underline: none;
+  color: lightgray;
+}
+.body {
+  display: flex;
+  padding: 2.5%;
+}
+.displaybar {
+  width: 40%;
+  background:  gray;
+  padding: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.text {
+  font-size: 20px;
+}
