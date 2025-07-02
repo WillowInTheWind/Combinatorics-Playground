@@ -1,5 +1,5 @@
 import {Component, Inject, Renderer2} from '@angular/core';
-import {DOCUMENT, NgForOf} from "@angular/common";
+import {DOCUMENT, NgForOf, NgIf} from "@angular/common";
 import {ObjectCardComponent} from "../object-card/object-card.component";
 import {CdkDragDrop, CdkDrag, CdkDropList, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 
@@ -10,7 +10,8 @@ import {CdkDragDrop, CdkDrag, CdkDropList, moveItemInArray, transferArrayItem} f
     NgForOf,
     ObjectCardComponent,
     CdkDrag,
-    CdkDropList
+    CdkDropList,
+    NgIf
   ],
   templateUrl: './sorting-playground.component.html',
   styleUrl: './sorting-playground.component.css'
@@ -18,7 +19,7 @@ import {CdkDragDrop, CdkDrag, CdkDropList, moveItemInArray, transferArrayItem} f
 export class SortingPlaygroundComponent {
 
   n_max = 5;
-  test: Array<any>[] = [];
+  test: number[] = [];
   unsortedObjects: ObjectCardComponent[] = [];
   sortedObjects: ObjectCardComponent[] = [];
 
@@ -36,12 +37,8 @@ export class SortingPlaygroundComponent {
     // this.myTikzScriptElement = this.document.createElement("script");
     // this.myTikzScriptElement.src = "https://tikzjax.com/v1/tikzjax.js";
     // document.body.appendChild(this.myTikzScriptElement);l
-    for (let i = 0; i < this.n_max; i++) {
-      this.test.push([]);
-      for (let j = 0; j < i; j++) {
-        this.test[i].push(j);
-      }
-    }
+    // @ts-ignore
+    this.test = Array(5).fill().map((x,i)=>i)
 
   }
   items = ['Zero', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];

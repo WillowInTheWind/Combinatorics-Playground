@@ -133,3 +133,47 @@ a:hover {
 .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
+
+.box {
+  min-width: 22.5%;
+display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1;
+  border: solid 1px black;
+  text-align: center;
+  padding: this.n px;
+}
+.topbox {
+  min-height: 10%;
+  min-width: 22.5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 2px black;
+  text-align: center;
+border-bottom: solid 4px black;
+}
+.corner {
+  min-height: 10%;  border: solid 2px black;
+border-right: solid 3px black;
+  border-bottom: solid 3px black;
+  min-width: 10%;
+}
+.bins {
+  margin: 10px 30px 10px 10px;
+}
+.sidebox {
+  min-height: 20%;  max-height: 10%;
+
+  min-width: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 2px black;
+  text-align: center;
+border-right: 4px solid black;
+}
+.row {
+  display: flex;
+}
