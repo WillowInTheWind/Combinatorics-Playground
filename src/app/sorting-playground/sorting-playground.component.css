@@ -142,7 +142,7 @@ display: flex;
   aspect-ratio: 1;
   border: solid 1px black;
   text-align: center;
-  padding: this.n px;
+  padding: 1px;
 }
 .topbox {
   min-height: 10%;

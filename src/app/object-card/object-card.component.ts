@@ -3,7 +3,7 @@ import {LatexRendererComponent} from "../latex-renderer/latex-renderer.component
 import {TikzRendererComponent} from "../tikz-renderer/tikz-renderer.component";
 import {CdkDrag} from '@angular/cdk/drag-drop';
 import {DragDropModule} from '@angular/cdk/drag-drop';
-import {DOCUMENT} from "@angular/common";
+import {DOCUMENT, NgOptimizedImage} from "@angular/common";
 import { EventEmitter } from '@angular/core';
 
 @Component({
@@ -15,6 +15,7 @@ import { EventEmitter } from '@angular/core';
     DragDropModule,
     CdkDrag,
     TikzRendererComponent,
+    NgOptimizedImage,
   ],
   templateUrl: './object-card.component.html',
   styleUrl: './object-card.component.css'
@@ -30,7 +31,7 @@ export class ObjectCardComponent {
 
   dragPosition = {x: 0, y: 0};
   line: any|undefined;
-  divColor = "#f2f2f2";
+  divColor = "white";
   selected  = false;
 
 

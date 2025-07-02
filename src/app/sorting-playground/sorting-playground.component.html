@@ -16,17 +16,17 @@
       </a>
     </div>
   </div>
-
-  <div class = "displaybar">
-    <app-object-card [objectInfo]="{description: '',index: 0 ,n: 0,r: 0}"></app-object-card>
-    <app-object-card [objectInfo]="{description: '',index: 0 ,n: 0,r: 0}"></app-object-card>
-    <app-object-card [objectInfo]="{description: '',index: 0 ,n: 0,r: 0}"></app-object-card>
-    <app-object-card [objectInfo]="{description: '',index: 0 ,n: 0,r: 0}"></app-object-card>
-    <app-object-card [objectInfo]="{description: '',index: 0 ,n: 0,r: 0}"></app-object-card>
-    <app-object-card [objectInfo]="{description: '',index: 0 ,n: 0,r: 0}"></app-object-card>
-    <app-object-card [objectInfo]="{description: '',index: 0 ,n: 0,r: 0}"></app-object-card>
-    <app-object-card [objectInfo]="{description: '',index: 0 ,n: 0,r: 0}"></app-object-card>
-
+<!--  cdkDropList-->
+<!--  #todoList="cdkDropList"-->
+<!--  [cdkDropListData]="todo"-->
+<!--  [cdkDropListConnectedTo]="[doneList]"-->
+<!--  class="example-list"-->
+<!--  (cdkDropListDropped)="drop($event)"-->
+  <div class = "displaybar"
+ >
+  @for (card of todo; track card) {
+<app-object-card [objectInfo]="{description: '',index: 0 ,n: 0,r: 0}"></app-object-card>
+  }
   </div>
   <div class = 'bins'>
       @for (item of test; track item) {
@@ -40,7 +40,7 @@
           <div class = "row" *ngIf = "item != 0">
             @for (items of test; track items) {
               <div class = "sidebox" *ngIf = "items == 0"> {{item}}</div>
-              <div class = "box" *ngIf = "items != 0"> </div>
+              <div class = "box" *ngIf = "items != 0" > </div>
             }
           </div>
         </div>
