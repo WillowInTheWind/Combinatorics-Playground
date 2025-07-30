@@ -11,6 +11,13 @@
 .page {
   margin: 10px;
 }
+.centerstrip {
+  display: flex;
+  flex-direction: row;
+}
+.connected {
+  display: none;
+}
 .objectwrapper {
   display: flex;
   flex-direction: column;

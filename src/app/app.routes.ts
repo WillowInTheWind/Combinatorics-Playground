@@ -8,4 +8,5 @@ export const routes: Routes = [
   { path: 'home', component: HomepageComponent},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'sorting', component: SortingPlaygroundComponent},
+
 ];

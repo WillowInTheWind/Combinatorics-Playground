@@ -1,7 +1,7 @@
 .case {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
+  //flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   margin: 2px;
@@ -10,9 +10,19 @@
 .mxitem {
   border: 2px black solid;
   border-radius: 5px;
-  padding: 5px;
+  padding: 20px;
   aspect-ratio: 5 / 7;
+  display: flex;
+  max-width: 100px;
+  max-height: 100px;
+
   /*background-color: #f2f2f2;*/
+
+}
+.objectimage {
+  max-width: 100%;
+  max-height: 100%;
+
 }
 .panel {
   margin: 2px;
@@ -35,4 +45,13 @@ button {
   position:fixed;
   top:50%;
   left:50%;
+}
+.icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #ccc;
+    width: 24px;
+    height: 24px;
+
 }

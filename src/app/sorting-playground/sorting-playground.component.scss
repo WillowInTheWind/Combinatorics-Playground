@@ -150,15 +150,15 @@ display: flex;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: solid 2px black;
+  /*border: solid 2px black;*/
   text-align: center;
-border-bottom: solid 4px black;
+border-bottom: solid 2px black;
 }
 .corner {
-  min-height: 10%;  border: solid 2px black;
-border-right: solid 3px black;
+  min-height: 10%;
+border-right: solid 2px black;
   border-bottom: solid 3px black;
-  min-width: 10%;
+  min-width: 5%;
 }
 .bins {
   margin: 10px 30px 10px 10px;
@@ -166,13 +166,13 @@ border-right: solid 3px black;
 .sidebox {
   min-height: 20%;  max-height: 10%;
 
-  min-width: 10%;
+  min-width: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: solid 2px black;
+  border-right: solid 2px black;
   text-align: center;
-border-right: 4px solid black;
+/*border-right: 4px solid black;*/
 }
 .row {
   display: flex;
