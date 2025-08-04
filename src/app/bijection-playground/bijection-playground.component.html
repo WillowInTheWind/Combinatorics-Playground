@@ -17,7 +17,34 @@
 </div>
 
 <div class = "page">
+  <div class = "sorting">
+<!--    <div><button>Less than N</button> <select></select></div>-->
+<!--    <div><button>N equals</button> <select></select></div>-->
+<!--    <div><button>R equals </button> <select></select></div>-->
+    <div class = "number"> N =
+   <select class="numberdropdown">
+    <option
+      *ngFor="let option of N"
+      [value]="option">
+<!--      [selected]="option === nrSelect"-->
+      {{ option }}
+    </option>
+   </select>
+    </div>
+<!--    </div>-->
+    <button> Less than</button>
+    <button>Equal To</button>
+       <div class = "number"> R  =     <select class="numberdropdown">
+         <option
+           *ngFor="let option of N"
+           [value]="option">
+           <!--      [selected]="option === nrSelect"-->
+           {{ option }}
+         </option>
+       </select>
+       </div>
 
+  </div>
   <div class = "selectors">
   <select class="objectdropdown" >
     <option value="" disabled>Choose an Object</option>

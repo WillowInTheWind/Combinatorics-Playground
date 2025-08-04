@@ -51,9 +51,9 @@ export class ObjectCardComponent {
   selected  = false;
 
 
-  constructor(private renderer2: Renderer2,
+  constructor(private ref: ElementRef,private renderer2: Renderer2,
               @Inject(DOCUMENT) private document: Document,
-              private ref: ElementRef) {
+              ) {
     // @ts-ignore
       this.listposition = 0;
   }
@@ -71,7 +71,10 @@ export class ObjectCardComponent {
     //   this.selected = false;
     //   this.divColor = "#f2f2f2";
     // }
+    this.dragPosition = {x: 0, y: 0};
+
     this.object.emit([this.ref, this.objectInfo]);
+    this.objectInfo.status = 12;
   }
   linemanager() {
     if (this.selected) {
