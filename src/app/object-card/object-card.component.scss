@@ -27,9 +27,9 @@
 .panel {
   margin: 2px;
 }
-.mxitem:hover {
-  outline: 1px solid black;
-}
+//.mxitem:hover {
+//  outline: 1px solid black;
+//}
 button {
   background: none;
   color: inherit;
@@ -54,4 +54,8 @@ button {
     width: 24px;
     height: 24px;
 
+}
+.icon:hover {
+  text-decoration: none;
+  border:none;
 }

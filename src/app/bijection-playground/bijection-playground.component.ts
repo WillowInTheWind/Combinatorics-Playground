@@ -26,15 +26,18 @@ declare var LeaderLine: any;
 })
 export class BijectionPlaygroundComponent {
   selected = 'option2';
-  N_MAX :number = 3;
+  N_MAX :number = 7;
+  Current_N !: number;
   @ViewChild("leftcolumn") leftcenter!: ElementRef;
   @ViewChild("rightcolumn") rightcenter!: ElementRef;
   N = Array.from({length: this.N_MAX}, (x, i) => i)
   rowtwocards: CombinatorialObjectCard[] = [];
   rowonecards: CombinatorialObjectCard[] = [];
-  centerstripmanager: boolean[] = [];
-  Left_set_description = "fullparentheses";
-  Right_set_description = "dyckpaths";
+  class = "";
+  class_options = ["Fibbonacci", "Narayana", "Binomial Coefficent"]
+  Set_options: string[] = [];
+  Left_set_description = "";
+  Right_set_description = "";
   public firstSelected: any | undefined = undefined;
   public secondSelected: any | undefined = undefined;
   private myTikzScriptElement: HTMLScriptElement;
@@ -47,9 +50,58 @@ export class BijectionPlaygroundComponent {
     document.body.appendChild(this.myTikzScriptElement);
   }
   ngOnInit() {
-     this.generate_cards_less_than_n()
+    let cards = this.generate_cards_equaL_n(this.Current_N);
+       this.rowonecards = cards[0]
+       this.rowtwocards = cards[1]
 
-console.log(this.rowonecards)
+// console.log(this.rowonecards)
+  }
+   onNSelectChange(event:any) {
+    this.Current_N = event
+
+    console.log("N CHECKED", this.Current_N);
+    let cards = this.generate_cards_equaL_n(this.Current_N);
+    this.rowonecards = cards[0]
+    this.rowtwocards = cards[1]
+
+  }
+  onclassSelectChange(event:any) {
+    this.class = event
+
+    switch (this.class) {
+      case "Fibbonacci":
+        this.Set_options = ["domino_tiling"]
+        // TO DO: DEAL WITH THIS ONE DIFFERENTLY
+        break
+      case "Narayana":
+        this.Set_options = ["fullparentheses", "dyckpaths"]
+        break
+      case "Binomial Coefficent":
+        this.Set_options = ["pixelstrips", "starfolkspaths"]
+
+        break
+      default:
+        this.Set_options = ["No class selected"]
+
+        break
+    }
+    this.class = event
+
+  }
+  onleftobjectSelectChange(event:any) {
+    this.Left_set_description = event
+    let cards = this.generate_cards_equaL_n(this.Current_N);
+    this.rowonecards = cards[0]
+    this.rowtwocards = cards[1]
+
+
+  }
+  onrightobjectSelectChange(event:any) {
+    this.Right_set_description = event
+    let cards = this.generate_cards_equaL_n(this.Current_N);
+    this.rowonecards = cards[0]
+    this.rowtwocards = cards[1]
+
   }
   cardSelected($event: any) {
 
@@ -82,62 +134,66 @@ console.log(this.rowonecards)
   }
 
 //     }
-    async generate_cards_less_than_n() {
+     generate_cards_equaL_n(number: number) {
       let k_left = 0;
       let k_right = 0;
 
-      for (let n = 0; n <= this.N_MAX; n++) {
+      // for (let n = 0; n <= this.N_MAX; n++) {
         let temp_list_one: any[] = []
         let temp_list_two: any[] = []
 
-        for (let i = 0; i <= n; i++) {
+        for (let i = 0; i <= number; i++) {
 
-          let row_one_images = await this.cardRender.getCardsbyNandR(n, i, this.Left_set_description);
+          let row_one_images = this.cardRender.getCardsbyNandR(number, i, this.Left_set_description).subscribe((row_one_images) => {
+              for (let image of row_one_images) {
+                temp_list_one.push({
+                  status: 10,
+                  description: this.Left_set_description,
+                  graphic: image,
+                  id: k_left,
+                  n: number,
+                  r: i
+                })
+                k_left++;
+              }
+            for (let i = temp_list_one.length - 1; i > 0; i--) {
 
-          let row_two_images = await this.cardRender.getCardsbyNandR(n, i, this.Right_set_description)
+              // Generate Random Index
+              const j = Math.floor(Math.random() * (i + 1));
 
-          for (let image of row_one_images) {
-            temp_list_one.push({
-              status: 10,
-              description: this.Left_set_description,
-              graphic: image,
-              id: k_left,
-              n: n,
-              r: i
-            })
-            k_left++;
-          }
-          for (let i = temp_list_one.length - 1; i > 0; i--) {
+              // Swap elements
+              [temp_list_one[i], temp_list_one[j]] = [temp_list_one[j], temp_list_one[i]];
+            }
+          });
 
-            // Generate Random Index
-            const j = Math.floor(Math.random() * (i + 1));
+          let row_two_images = this.cardRender.getCardsbyNandR(number, i, this.Right_set_description).subscribe((row_two_images) => {
+              for (let image of row_two_images) {
+                temp_list_two.push({
+                  status: 11, description: this.Right_set_description, graphic: image, id: k_right, n: number,  r: i
+                })
+                k_right++;
+              }
+            for (let i = temp_list_two.length - 1; i > 0; i--) {
 
-            // Swap elements
-            [temp_list_one[i], temp_list_one[j]] = [temp_list_one[j], temp_list_one[i]];
-          }
-          for (let i = temp_list_two.length - 1; i > 0; i--) {
+              // Generate Random Index
+              const j = Math.floor(Math.random() * (i + 1));
 
-            // Generate Random Index
-            const j = Math.floor(Math.random() * (i + 1));
+              // Swap elements
+              [temp_list_two[i], temp_list_two[j]] = [temp_list_two[j], temp_list_two[i]];
+            }
+          });}
 
-            // Swap elements
-            [temp_list_two[i], temp_list_two[j]] = [temp_list_two[j], temp_list_two[i]];
-          }
-          for (let image of row_two_images) {
-            temp_list_two.push({
-              status: 11, description: this.Right_set_description, graphic: image, id: k_right, n: n, r: i
-            })
-            k_right++;
-          }
 
-        }
-        for (let image of temp_list_one) {
-          this.rowonecards.push(image)
-        }
-        for (let image of temp_list_two) {
-          this.rowtwocards.push(image)
-        }
-      }
+
+
+        //
+        //
+        // }
+        // if (temp_list_one.length == 0) {
+        //   console.log("Card list was empty");
+        // }
+        return [temp_list_one,temp_list_two];
+
     }
 
   cardunselected($event: any) {
@@ -168,6 +224,14 @@ console.log(this.rowonecards)
     //   this.secondSelected = undefined;
     // }
   }
+  // rowonetracker(index: number, item: any): number {
+  //
+  //   return item.id;
+  // }
+  //
+  // rowtwotracker(index: number, item: any): number {
+  //   return item;
+  // }
 
   protected readonly Array = Array;
 }

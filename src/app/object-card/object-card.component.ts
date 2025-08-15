@@ -1,6 +1,6 @@
 import {
   Component,
-  ElementRef,
+  ElementRef, inject,
   Inject,
   Input,
   Output,
@@ -17,6 +17,8 @@ import {DOCUMENT, NgOptimizedImage} from "@angular/common";
 import { EventEmitter } from '@angular/core';
 import {MatIcon, MatIconModule} from "@angular/material/icon";
 import {SafeUrl} from "@angular/platform-browser";
+import {MatDialog} from "@angular/material/dialog";
+import {ImagemodalComponent} from "../imagemodal/imagemodal.component";
 
 @Component({
   selector: 'app-object-card',
@@ -40,6 +42,7 @@ export class ObjectCardComponent {
   @ViewChild('testspace') test!: ElementRef;
 
   @Input() listposition: number;
+  dialog = inject(MatDialog);
 
   @Input() index: number | undefined;
   @Output() public object = new EventEmitter<any>();
@@ -61,7 +64,14 @@ export class ObjectCardComponent {
       this.dragPosition = {x: this.dragPosition.x, y: this.dragPosition.y + .01};
 
   }
-
+  openModal(): void {
+    this.dialog.open(ImagemodalComponent, {
+      width: '1000px',
+      data: {
+        graphic: this.graphic,
+      },
+    });
+  }
   selectCard() :void {
     // if (!this.selected ) {
     //   this.divColor = "#ababab";

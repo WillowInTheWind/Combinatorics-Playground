@@ -22,13 +22,15 @@
 <!--    <div><button>N equals</button> <select></select></div>-->
 <!--    <div><button>R equals </button> <select></select></div>-->
     <div class = "number"> N =
-   <select class="numberdropdown">
+   <select (ngModelChange)="onNSelectChange($event)" [(ngModel)] = "this.Current_N" class="numberdropdown">
     <option
       *ngFor="let option of N"
       [value]="option">
 <!--      [selected]="option === nrSelect"-->
       {{ option }}
     </option>
+
+
    </select>
     </div>
 <!--    </div>-->
@@ -46,29 +48,38 @@
 
   </div>
   <div class = "selectors">
-  <select class="objectdropdown" >
-    <option value="" disabled>Choose an Object</option>
-    <option>placeholder 1</option>
-    <option>placeholder 2</option>
-  </select>
-  <select class="classdropdown" >
-    <option value="" disabled>Choose a Class</option>
-    <option>Catalan Numbers</option>
-    <option>Fibbonacci Numbers</option>
-    <option>Binomial Coefficents</option>
+    <select (ngModelChange)="onleftobjectSelectChange($event)" [(ngModel)] = "this.Left_set_description" class="objectdropdown">
+      <option
+        *ngFor="let option of Set_options"
+        [value]="option">
+        <!--      [selected]="option === nrSelect"-->
+        {{ option }}
+      </option>
 
-  </select>
-  <select class="objectdropdown" >
-    <option value="" disabled>Choose an Object</option>
-<option>placeholder 1</option>
-    <option>placeholder 2</option>
+    </select>
+    <select (ngModelChange)="onclassSelectChange($event)" [(ngModel)] = "this.class" class="classdropdown">
+      <option
+        *ngFor="let option of class_options"
+        [value]="option">
+        <!--      [selected]="option === nrSelect"-->
+        {{ option }}
+      </option>
 
-  </select>
+    </select>
+    <select (ngModelChange)="onrightobjectSelectChange($event)" [(ngModel)] = "this.Right_set_description" class="objectdropdown">
+      <option
+        *ngFor="let option of Set_options"
+        [value]="option">
+        <!--      [selected]="option === nrSelect"-->
+        {{ option }}
+      </option>
+
+    </select>
 </div>
 <div class = "wrapper">
 <!--  left most column-->
   <div  class = "objectwrapper">
-    <ul class = "styless" *ngFor="let card of rowonecards">
+    <ul class = "styless" *ngFor="let card of rowonecards ">
       <app-object-card
         [listposition] = "1"
         [objectInfo]="card"
