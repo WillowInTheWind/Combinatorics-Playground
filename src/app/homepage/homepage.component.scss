@@ -1,7 +1,9 @@
 .title {
-  font-size: 3em;
+  font-size: 50px;
   text-align: center;
   padding: 5% 20%;
+  line-height: 100%;
+
 }
 .titlepage {
   display: flex;
@@ -14,14 +16,14 @@
 .option {
    font-size: 1.5em;
   padding: 10px;
+  text-align: center;
   border-bottom: 1px solid white;
 }
 .options {
   display: flex;
   width: 100%;
   justify-content: space-around;
-
-  align-items: center;
+  align-content: center;
 }
 
 a {
@@ -39,12 +41,32 @@ a:hover {
   padding: 2.5%;
 }
 .displaybar {
-  width: 40%;
-  background:  gray;
+  width: 1000px;
+  background:  rgba(143, 143, 143, 0.5);
   padding: 10px;
   margin-left: 10px;
+  border-radius: 15px;
   margin-right: 10px;
 }
 .text {
   font-size: 20px;
+}
+.explanation {
+  display: flex;
+  min-height: 300px;
+}
+.images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 40%;
+  background:  rgba(143, 143, 143);
+}
+.text {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  min-width: 60%;
+
 }

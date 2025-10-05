@@ -15,7 +15,7 @@ import {HttpClientModule} from "@angular/common/http";
   standalone: true,
   imports: [ObjectCardComponent, HttpClientModule, RouterOutlet, MatIconModule, MatToolbar, MatToolbarModule, CommonModule, MatMenu, MatMenuTrigger, MatMenuItem],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'Combinatorics-Playground';

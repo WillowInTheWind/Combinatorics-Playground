@@ -11,6 +11,13 @@
 .page {
   margin: 10px;
 }
+.centerstrip {
+  display: flex;
+  flex-direction: row;
+}
+.connected {
+  display: none;
+}
 .objectwrapper {
   display: flex;
   flex-direction: column;
@@ -47,7 +54,20 @@
 
   /*flex-wrap: ;*/
 }
-
+.number {
+  font-size: 20px;
+}
+.numberdropdown {
+  min-width: 40px;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  margin: 10px;
+  font-size: 20px;
+}
+.sorting {
+  display: flex;
+  justify-content: space-between;
+}
 .selectors {
   display: flex;
   justify-content: space-between

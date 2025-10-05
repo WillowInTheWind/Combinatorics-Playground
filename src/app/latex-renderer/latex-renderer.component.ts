@@ -6,7 +6,7 @@ import { ConfigService } from '../config.service'
   standalone: true,
   imports: [],
   templateUrl: './latex-renderer.component.html',
-  styleUrl: './latex-renderer.component.css'
+  styleUrl: './latex-renderer.component.scss'
 })
 //https://github.com/shubhvjain/angular-mathjax/tree/master
 export class LatexRendererComponent implements OnInit {

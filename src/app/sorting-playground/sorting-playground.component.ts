@@ -14,7 +14,7 @@ import {CdkDragDrop, CdkDrag, CdkDropList, moveItemInArray, transferArrayItem} f
     NgIf
   ],
   templateUrl: './sorting-playground.component.html',
-  styleUrl: './sorting-playground.component.css'
+  styleUrl: './sorting-playground.component.scss'
 })
 export class SortingPlaygroundComponent {
 

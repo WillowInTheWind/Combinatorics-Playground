@@ -17,7 +17,7 @@ import { DOCUMENT } from '@angular/common';
   standalone: true,
   imports: [],
   templateUrl: './tikz-renderer.component.html',
-  styleUrl: './tikz-renderer.component.css'
+  styleUrl: './tikz-renderer.component.scss'
 })
 export class TikzRendererComponent {
   @Input() index: number | undefined;

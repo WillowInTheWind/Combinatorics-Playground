@@ -1,14 +1,21 @@
-<button (click) = "selectCard()">
 <!--<app-tikz-renderer [style.background-color]="divColor" class = "mxitem case" #renderer cdkDragBoundary = ".wrapper" [cdkDragFreeDragPosition]="dragPosition"    [index]="index" [graphic]="graphic" cdkDrag></app-tikz-renderer>-->
 <div [style.background-color]="divColor"     class = "mxitem case"
      (cdkDragMoved)="linemanager()"
      cdkDragBoundary = ".wrapper"
   [cdkDragFreeDragPosition]="dragPosition"
+     [cdkDragDisabled]="(this.objectInfo.status % 10 == 2)"
   cdkDrag
 >
+  <button (click) = "this.openModal()" class = "icon"><mat-icon aria-hidden="false" fontIcon="menu"></mat-icon></button>
+  <button (click) = "(this.objectInfo.status % 10 != 2)? selectCard() : unselectCard()">
+    <img class = "objectimage" [src]='graphic'  alt=""/>
 
-  <img src="assets\Screenshot2025-07-01181438.png" height="50" alt="">
+  </button>
+
+<!--  <div #testspace> N: {{this.objectInfo.n}} </div>-->
+<!--  <div #testspace> R: {{this.objectInfo.n}} </div>-->
+
+<!--    <img src="" height="25" alt="">-->
 </div>
 
-</button>
 

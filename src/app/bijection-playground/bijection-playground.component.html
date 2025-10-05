@@ -17,47 +17,120 @@
 </div>
 
 <div class = "page">
+  <div class = "sorting">
+<!--    <div><button>Less than N</button> <select></select></div>-->
+<!--    <div><button>N equals</button> <select></select></div>-->
+<!--    <div><button>R equals </button> <select></select></div>-->
+    <div class = "number"> N =
+   <select (ngModelChange)="onNSelectChange($event)" [(ngModel)] = "this.Current_N" class="numberdropdown">
+    <option
+      *ngFor="let option of N"
+      [value]="option">
+<!--      [selected]="option === nrSelect"-->
+      {{ option }}
+    </option>
 
+
+   </select>
+    </div>
+<!--    </div>-->
+    <button> Less than</button>
+    <button>Equal To</button>
+       <div class = "number"> R  =     <select class="numberdropdown">
+         <option
+           *ngFor="let option of N"
+           [value]="option">
+           <!--      [selected]="option === nrSelect"-->
+           {{ option }}
+         </option>
+       </select>
+       </div>
+
+  </div>
   <div class = "selectors">
-  <select class="objectdropdown" >
-    <option value="" disabled>Choose an Object</option>
-    <option>placeholder 1</option>
-    <option>placeholder 2</option>
-  </select>
-  <select class="classdropdown" >
-    <option value="" disabled>Choose a Class</option>
-    <option>Catalan Numbers</option>
-    <option>Fibbonacci Numbers</option>
-    <option>Binomial Coefficents</option>
+    <select (ngModelChange)="onleftobjectSelectChange($event)" [(ngModel)] = "this.Left_set_description" class="objectdropdown">
+      <option
+        *ngFor="let option of Set_options"
+        [value]="option">
+        <!--      [selected]="option === nrSelect"-->
+        {{ option }}
+      </option>
 
-  </select>
-  <select class="objectdropdown" >
-    <option value="" disabled>Choose an Object</option>
-<option>placeholder 1</option>
-    <option>placeholder 2</option>
+    </select>
+    <select (ngModelChange)="onclassSelectChange($event)" [(ngModel)] = "this.class" class="classdropdown">
+      <option
+        *ngFor="let option of class_options"
+        [value]="option">
+        <!--      [selected]="option === nrSelect"-->
+        {{ option }}
+      </option>
 
-  </select>
+    </select>
+    <select (ngModelChange)="onrightobjectSelectChange($event)" [(ngModel)] = "this.Right_set_description" class="objectdropdown">
+      <option
+        *ngFor="let option of Set_options"
+        [value]="option">
+        <!--      [selected]="option === nrSelect"-->
+        {{ option }}
+      </option>
+
+    </select>
 </div>
 <div class = "wrapper">
+<!--  left most column-->
   <div  class = "objectwrapper">
-    <ul class = "styless" *ngFor="let graphic of classOneGraphics">
+    <ul class = "styless" *ngFor="let card of rowonecards ">
       <app-object-card
         [listposition] = "1"
-        [objectInfo]="{description: 'test',index: 1, n:0,r:0}"
-        [id]  ="'oneid-' + classOneGraphics.indexOf(graphic)"
+        [objectInfo]="card"
+        (deselectobject)="cardunselected($event)"
+        [id]  ="'oneid-' + card.id"
         (object)="cardSelected($event)"
-        [index] = "classOneGraphics.indexOf(graphic)"
-        [graphic] = "graphic" ></app-object-card>
+        [index] = "card.id"
+        [graphic] = "card.graphic" ></app-object-card>
+
     </ul>
   </div>
+<!-- Middle column that handles connection logic -->
+  <div class = "centerstrip">
+    <div #leftcolumn class = "left objectwrapper column">
+<!--      <ul class = "styless" *ngFor="let card of rowonecards">-->
+<!--        <app-object-card-->
+<!--          class = "connected"-->
+<!--          [listposition] = "1"-->
+<!--          [objectInfo]="{status: 12,description: '',graphic: '',id: card.id ,n: -1,r: -1 }"-->
+<!--          [id]  ="'left-' + card.id"-->
+<!--          (object)="cardSelected($event)"-->
+<!--          (deselectobject)="cardunselected($event)"-->
+<!--          [index] = "card.id"-->
+<!--          [graphic] = "card.description" ></app-object-card>-->
+<!--      </ul>-->
+    </div>
+    <div #rightcolumn  class = "right objectwrapper column">
+<!--      <ul class = "styless" *ngFor="let card of rowtwocards">-->
+<!--        <app-object-card-->
+<!--          class = "connected"-->
+<!--          [listposition] = "1"          (deselectobject)="cardunselected($event)"-->
+
+<!--          [objectInfo]="{status: 12,description: '',graphic: '',id: card.id ,n: -1,r: -1 }"-->
+<!--          [id]  ="'right-' + card.id"-->
+<!--          (object)="cardSelected($event)"-->
+<!--          [index] = "card.id"-->
+<!--          [graphic] = "card.graphic" ></app-object-card>-->
+<!--      </ul>-->
+    </div>
+  </div>
+<!--  Right most column-->
   <div  class = "objectwrapper">
-    <ul class = "styless" *ngFor="let graphic of classTwoGraphic">
-      <app-object-card (object)="cardSelected($event)"
-                       [listposition]="2"
-                       [index] = "classTwoGraphic.indexOf(graphic)"
-                       [graphic] = "graphic"
-                       [objectInfo]="{description: 'test',index: 1, n:0,r:0}"></app-object-card>
-    </ul>
+    <ul class = "styless" *ngFor="let card of rowtwocards">
+    <app-object-card
+      [listposition] = "1"
+      [objectInfo]="card"
+      [id]  ="'twoid-' + card.id"
+      (object)="cardSelected($event)"
+      [index] = "card.id"
+      [graphic] = "card.graphic" ></app-object-card>
+  </ul>
   </div>
 </div>
 </div>
