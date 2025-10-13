@@ -79,7 +79,7 @@
 <div class = "wrapper">
 <!--  left most column-->
   <div  class = "objectwrapper">
-    <ul class = "styless" *ngFor="let card of rowonecards ">
+    <ul id = "leftcolumn" class = "styless" *ngFor="let card of rowonecards ">
       <app-object-card
         [listposition] = "1"
         [objectInfo]="card"
@@ -93,7 +93,7 @@
   </div>
 <!-- Middle column that handles connection logic -->
   <div class = "centerstrip">
-    <div #leftcolumn class = "left objectwrapper column">
+    <div #leftmiddlecolumn  id = 'leftmiddlecolumn' class = "left objectwrapper column">
 <!--      <ul class = "styless" *ngFor="let card of rowonecards">-->
 <!--        <app-object-card-->
 <!--          class = "connected"-->
@@ -106,23 +106,11 @@
 <!--          [graphic] = "card.description" ></app-object-card>-->
 <!--      </ul>-->
     </div>
-    <div #rightcolumn  class = "right objectwrapper column">
-<!--      <ul class = "styless" *ngFor="let card of rowtwocards">-->
-<!--        <app-object-card-->
-<!--          class = "connected"-->
-<!--          [listposition] = "1"          (deselectobject)="cardunselected($event)"-->
-
-<!--          [objectInfo]="{status: 12,description: '',graphic: '',id: card.id ,n: -1,r: -1 }"-->
-<!--          [id]  ="'right-' + card.id"-->
-<!--          (object)="cardSelected($event)"-->
-<!--          [index] = "card.id"-->
-<!--          [graphic] = "card.graphic" ></app-object-card>-->
-<!--      </ul>-->
-    </div>
+    <div #rightmiddlecolumn  id ='rightmiddlecolumn' class = "right objectwrapper column"></div>
   </div>
 <!--  Right most column-->
   <div  class = "objectwrapper">
-    <ul class = "styless" *ngFor="let card of rowtwocards">
+    <ul id = "rightcolumn" class = "styless" *ngFor="let card of rowtwocards">
     <app-object-card
       [listposition] = "1"
       [objectInfo]="card"

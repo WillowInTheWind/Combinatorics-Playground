@@ -27,8 +27,8 @@ declare var LeaderLine: any;
 export class BijectionPlaygroundComponent {
   N_MAX :number = 7;
   Current_N !: number;
-  @ViewChild("leftcolumn") leftcenter!: ElementRef;
-  @ViewChild("rightcolumn") rightcenter!: ElementRef;
+  @ViewChild("leftmiddlecolumn") leftcenter!: ElementRef;
+  @ViewChild("rightmiddlecolumn") rightcenter!: ElementRef;
   N = Array.from({length: this.N_MAX}, (x, i) => i)
   rowtwocards: CombinatorialObjectCard[] = [];
   rowonecards: CombinatorialObjectCard[] = [];
@@ -49,14 +49,14 @@ export class BijectionPlaygroundComponent {
     document.body.appendChild(this.myTikzScriptElement);
   }
   ngOnInit() {
-    let cards = this.generate_cards_equaL_n(this.Current_N);
+    let cards = this.generate_cards_equal_n(this.Current_N);
        this.rowonecards = cards[0]
        this.rowtwocards = cards[1]
   }
    onNSelectChange(event:any) {
     this.Current_N = event
     console.log("N CHECKED", this.Current_N);
-    let cards = this.generate_cards_equaL_n(this.Current_N);
+    let cards = this.generate_cards_equal_n(this.Current_N);
     this.rowonecards = cards[0]
     this.rowtwocards = cards[1]
 
@@ -70,13 +70,13 @@ export class BijectionPlaygroundComponent {
   }
   onleftobjectSelectChange(event:any) {
     this.Left_set_description = event
-    let cards = this.generate_cards_equaL_n(this.Current_N);
+    let cards = this.generate_cards_equal_n(this.Current_N);
     this.rowonecards = cards[0]
     this.rowtwocards = cards[1]
   }
   onrightobjectSelectChange(event:any) {
     this.Right_set_description = event
-    let cards = this.generate_cards_equaL_n(this.Current_N);
+    let cards = this.generate_cards_equal_n(this.Current_N);
     this.rowonecards = cards[0]
     this.rowtwocards = cards[1]
   }
@@ -85,10 +85,9 @@ export class BijectionPlaygroundComponent {
       this.firstSelected = $event;
       return;
     }
-
-      if ($event == 0 || $event[1].status % 10 == this.firstSelected.status % 10 || $event[1] == this.firstSelected[1]) {
-        return;
-      }
+    if ($event == 0 || $event[1].status % 10 == this.firstSelected.status % 10 || $event[1] == this.firstSelected[1]) {
+      return;
+    }
       console.log(this.firstSelected[0].nativeElement);
       this.secondSelected = $event;
       this.secondSelected[0].dragPosition = {x: 0 , y: 0};
@@ -100,7 +99,7 @@ export class BijectionPlaygroundComponent {
 
   }
 
-     generate_cards_equaL_n(number: number) {
+     generate_cards_equal_n(number: number) {
       let k_left = 0;
       let k_right = 0;
       let temp_list_one: any[] = [];
@@ -140,31 +139,15 @@ export class BijectionPlaygroundComponent {
     }
 
   cardunselected($event: any) {
-    // if (this.firstSelected == undefined) {
-    //   this.firstSelected = $event;
-    // }
-    // else {
-    //   //TO-DO: FIX LOGIC TO CHECK FOR DUPLICATES
-    //   if ($event == 0 || $event[1].status % 10 == this.firstSelected.status % 10 || $event[1] == this.firstSelected[1]) {
-    //     console.log("Selected from same side")
-    //     return;
-    //
-    //   }
-    //   console.log(this.firstSelected[0].nativeElement);
-    //
-    //   // console.log(this.secondSelected.nativeElement);
-    //   // console.log(this.firstSelected.nativeElement.divColor)
-    //   this.secondSelected = $event;
-    //   //console.log(this.secondSelected[0].nativeElement.ObjectCardComponent.returnData())
-    //   // this.firstSelected[0].nativeElement.objectInfo.status = 21;
-    //   this.secondSelected[0].dragPosition = {x: 0 , y: 0};
-    //
-    //   // this.firstSelected.nativeElement.objectInfo.status = 12;
-    //   let refrence = this.leftcenter.nativeElement.append(this.firstSelected[0].nativeElement)
-    //   this.rightcenter.nativeElement.append(this.secondSelected[0].nativeElement);
-    //   console.log(this.firstSelected[0].nativeElement.objectInfo)
-    //   this.firstSelected = undefined;
-    //   this.secondSelected = undefined;
+    // is Card 1
+    if ($event[1].description == this.firstSelected[1].description && $event[1].n == this.firstSelected[1].n && $event[1].id == this.firstSelected[1].id  ) {
+      this.firstSelected = undefined;
+      return;
+    }
+    else if ($event[1].description == this.secondSelected[1].description && $event[1].n == this.secondSelected[1].n && $event[1].id == this.secondSelected[1].id  ) {
+      this.secondSelected = undefined;
+      return;
+    }
     // }
   }
 

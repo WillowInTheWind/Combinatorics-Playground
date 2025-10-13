@@ -73,18 +73,24 @@ export class ObjectCardComponent {
     });
   }
   selectCard() :void {
-    // if (!this.selected ) {
-    //   this.divColor = "#ababab";
-    //   this.selected = true;
-    // }
-    // else {
-    //   this.selected = false;
-    //   this.divColor = "#f2f2f2";
-    // }
-    this.dragPosition = {x: 0, y: 0};
+    console.log(this.ref.nativeElement.parentElement.id)
+    if (this.ref.nativeElement.parentElement.id == "rightmiddlecolumn" || this.ref.nativeElement.parentElement.id == "leftmiddlecolumn") {
+      console.log("MIDDLE COLUMN SELECTED");
+      return;
+    }
+    if (!this.selected ) {
+      this.divColor = "#ababab";
+      this.selected = true;
+      this.dragPosition = {x: 0, y: 0};
+      this.object.emit([this.ref, this.objectInfo]);
+      // this.objectInfo.status = 12;
+    }
+    else {
+      this.selected = false;
+      this.divColor = "#f2f2f2";
+      this.deselectobject.emit([this.ref, this.objectInfo]);
+    }
 
-    this.object.emit([this.ref, this.objectInfo]);
-    this.objectInfo.status = 12;
   }
   linemanager() {
     if (this.selected) {
@@ -94,11 +100,7 @@ export class ObjectCardComponent {
 //   ngOnChanges(changes: SimpleChanges) {
 //     this.test.nativeElement.text = this.objectInfo.id;
 // }
-  unselectCard() {
 
-    this.deselectobject.emit(this.ref);
-
-  }
   returnData () {
     return this.objectInfo
   }

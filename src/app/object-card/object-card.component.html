@@ -7,9 +7,9 @@
   cdkDrag
 >
   <button (click) = "this.openModal()" class = "icon"><mat-icon aria-hidden="false" fontIcon="menu"></mat-icon></button>
-  <button (click) = "(this.objectInfo.status % 10 != 2)? selectCard() : unselectCard()">
+  <button (click) = "selectCard()" >
     <img class = "objectimage" [src]='graphic'  alt=""/>
-
+    <p> {{objectInfo.status }}</p>
   </button>
 
 <!--  <div #testspace> N: {{this.objectInfo.n}} </div>-->
