@@ -9,12 +9,12 @@ import { environment } from '../environments/environment';
   providedIn: 'root'
 })
 export class ObjectRendererService {
-    api_url: string = environment.api_url;
+    api_url: string = "https://combinatorics-playground-backend.onrender.com";
    getCardsbyNandR (n: number, r: number, set: string) {
     let image_urls: SafeUrl[] = []
 
 
-      return this.http.get( this.api_url + set + "/n_r",{params: {
+      return this.http.get( this.api_url + '/api/binary/' + set + "/n_r",{params: {
          n: n, r: r}}).pipe(
        map(res => {
          /* Your processing here */

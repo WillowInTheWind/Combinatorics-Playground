@@ -34,7 +34,7 @@ export class BijectionPlaygroundComponent {
   rowonecards: CombinatorialObjectCard[] = [];
   class = "";
   class_options = ["Narayana", "Binomial Coefficent"]
-  Set_options: string[] = [];
+  Set_options: string[] =  ["pixelstrips", "starfolkspaths"];
   Left_set_description = "";
   Right_set_description = "";
   public firstSelected: any | undefined = undefined;
@@ -63,7 +63,9 @@ export class BijectionPlaygroundComponent {
   }
   onclassSelectChange(event:any) {
     this.class = event
-    switch (this.class) {case "Narayana":this.Set_options = ["fullparentheses", "dyckpaths"];break;
+    switch (this.class) {
+
+      case "Narayana":this.Set_options = ["fullparentheses", "dyckpaths"];break;
       case "Binomial Coefficent":this.Set_options = ["pixelstrips", "starfolkspaths"];break;
       default:this.Set_options = ["No class selected"];break;}
     this.class = event
