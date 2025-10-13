@@ -2,27 +2,19 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import { catchError, map } from 'rxjs/operators';
+import { environment } from '../environments/environment';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ObjectRendererService {
+    api_url: string = environment.api_url;
    getCardsbyNandR (n: number, r: number, set: string) {
     let image_urls: SafeUrl[] = []
-    // let image_bytes = this.http.get<any>().subscribe(
-    //
-    //
-    //       (res: any) => {
-    //       // console.log(res)
-    //
-    //       }
-    // )
-    // console.log("http request completed - returning URLS")
-  //   to do
-  //    return image_urls;
 
-      return this.http.get( "http://127.0.0.1:5000/api/binary/" + set + "/n_r",{params: {
+
+      return this.http.get( this.api_url + set + "/n_r",{params: {
          n: n, r: r}}).pipe(
        map(res => {
          /* Your processing here */
