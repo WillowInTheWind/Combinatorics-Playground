@@ -49,6 +49,7 @@ export class BijectionPlaygroundComponent {
     document.body.appendChild(this.myTikzScriptElement);
   }
   ngOnInit() {
+    /* TODO: move this into new method generated on button press */
     let cards = this.generate_cards_equal_n(this.Current_N);
        this.rowonecards = cards[0]
        this.rowtwocards = cards[1]
@@ -73,6 +74,8 @@ export class BijectionPlaygroundComponent {
   onleftobjectSelectChange(event:any) {
     this.Left_set_description = event
     let cards = this.generate_cards_equal_n(this.Current_N);
+    // TODO: FOR OPTIMIZATION, ONLY CHANGE CHANGED CARD
+    // TODO: CLEAR SELECTIONS
     this.rowonecards = cards[0]
     this.rowtwocards = cards[1]
   }
@@ -93,15 +96,24 @@ export class BijectionPlaygroundComponent {
       console.log(this.firstSelected[0].nativeElement);
       this.secondSelected = $event;
       this.secondSelected[0].dragPosition = {x: 0 , y: 0};
-      let refrence = this.leftcenter.nativeElement.append(this.firstSelected[0].nativeElement)
-      this.rightcenter.nativeElement.append(this.secondSelected[0].nativeElement);
-      console.log(this.firstSelected[0].nativeElement.objectInfo)
+      let firstcard: any = this.firstSelected[0].nativeElement
+     let secondcard: any = this.secondSelected[0].nativeElement
+     //TODO: CHANGE COLOR OF CARD
+     let refrence = this.leftcenter.nativeElement.append(firstcard)
+      this.rightcenter.nativeElement.append(secondcard);
+
+    console.log(this.firstSelected[0].nativeElement.objectInfo)
       this.firstSelected = undefined;
       this.secondSelected = undefined;
 
   }
 
      generate_cards_equal_n(number: number) {
+      /* Adjust to take in parameters like
+        - less than, or equal to
+        - specify r / dont specify r
+        - Randomize / Dont randomize
+       */
       let k_left = 0;
       let k_right = 0;
       let temp_list_one: any[] = [];
