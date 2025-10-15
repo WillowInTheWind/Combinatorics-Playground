@@ -1,0 +1,33 @@
+
+<div class = "wrapper">
+  <div  class = "objectwrapper">
+    <ul id = "leftcolumn" class = "styless" *ngFor="let card of rowonecards ">
+      <app-object-card
+        [listposition] = "1"
+        [objectInfo]="card"
+        (deselectobject)="cardunselected($event)"
+        [id]  ="'oneid-' + card.id"
+        (object)="cardSelected($event)"
+        [index] = "card.id"
+        [graphic] = "card.graphic" ></app-object-card>
+    </ul>
+  </div>
+
+  <div class = "centerstrip">
+    <div #leftmiddlecolumn  id = 'leftmiddlecolumn' class = "left objectwrapper column">
+    </div>
+    <div #rightmiddlecolumn  id ='rightmiddlecolumn' class = "right objectwrapper column"></div>
+  </div>
+
+  <div  class = "objectwrapper">
+    <ul id = "rightcolumn" class = "styless" *ngFor="let card of rowtwocards">
+      <app-object-card
+        [listposition] = "1"
+        [objectInfo]="card"
+        [id]  ="'twoid-' + card.id"
+        (object)="cardSelected($event)"
+        [index] = "card.id"
+        [graphic] = "card.graphic" ></app-object-card>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,158 @@
+.wrapper {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  outline: black solid 2px;
+  border-radius: 10px;
+  padding:5px;
+  background-image: url("https://files.123freevectors.com/wp-content/original/165818-chalkboard-background.jpg");
+}
+.page {
+  margin: 10px;
+}
+.centerstrip {
+  display: flex;
+  flex-direction: row;
+}
+.connected {
+  display: none;
+}
+.objectwrapper {
+  display: flex;
+  flex-direction: column;
+}
+#objectclass2 {
+  display: flex;
+  justify-content: right;
+}
+.case {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 2px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.mxitem {
+  border: 2px black solid;
+  border-radius: 5px;
+  padding: 5px;
+  /*aspect-ratio: 5 / 7;*/
+  background-color: #f2f2f2;
+}
+.panel {
+  margin: 2px;
+}
+.mxitem:hover {
+  outline: 1px solid black;
+}
+.styless {
+  list-style-type: none;
+  margin: 2px;
+  padding: 0;
+
+  /*flex-wrap: ;*/
+}
+.number {
+  font-size: 20px;
+}
+.numberdropdown {
+  min-width: 40px;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  margin: 10px;
+  font-size: 20px;
+}
+.sorting {
+  display: flex;
+  justify-content: space-between;
+}
+.selectors {
+  display: flex;
+  justify-content: space-between
+;
+}
+.classdropdown {
+  width: 100%;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  margin: 10px;
+  font-size: 14px;
+
+}
+.objectdropdown {
+  width: 90%;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+
+  margin: 10px;font-size: 14px;
+}
+
+.title {
+  font-size: 1em;
+  text-align: center;
+}
+.titlepage {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background:  #0057b7;
+  color: white;
+  padding-left: 10px;
+}
+.option {
+  font-size: 1em;
+  padding: 10px;
+  margin: 10px;
+  border-bottom: 1px solid white;
+}
+.options {
+  display: flex;
+//flex-direction: column;
+  /*width: 100%;*/
+  justify-content: space-around;
+  align-items: center;
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+a {
+  text-decoration: none;
+  text-underline: none;
+  color: inherit;
+}
+a:hover {
+  text-decoration: none;
+  text-underline: none;
+  color: lightgray;
+}
+
+.Playgroundplanner {
+  display: flex;
+  justify-content: space-between;
+  border: 2px black solid;
+  padding: 10px;
+}
+
+.groupselectors {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  align-items: flex-start;
+}
+.rselector {
+  display: flex;
+  justify-content: space-around;
+  font-size: 14px;
+  align-items: center;
+  margin: 10px;
+}
+.checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
