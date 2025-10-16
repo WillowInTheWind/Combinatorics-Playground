@@ -171,7 +171,7 @@ export class PlaygroundCenterComponent {
     let k_right = 0;
     let temp_list_one: any[] = [];
     let temp_list_two: any[] = []
-    for (let j = 0; j <= this.r; j++) {
+    for (let j = 0; j <= this.n; j++) {
     for (let i = 0; i <= this.r; i++) {
       let row_one_images = this.cardRender.getCardsbyNandR(j, i, this.Left_set_description).subscribe((row_one_images) => {
         for (let image of row_one_images) {
