@@ -92,7 +92,7 @@ export class BijectionPlaygroundComponent {
     component.instance.r = this.using_r ? -1 : this.Current_R;
     component.instance.Left_set_description = this.Left_set_description;
     component.instance.Right_set_description = this.Right_set_description;
-    component.instance.mode = [this.nmode,this.using_r ? this.rmode : "equal"];
+    component.instance.mode = [this.nmode,this.using_r ? this.rmode : "less"];
   }
   using_r: any;
 }

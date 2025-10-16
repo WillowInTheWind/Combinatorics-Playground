@@ -97,7 +97,7 @@ export class PlaygroundCenterComponent {
     let k_right = 0;
     let temp_list_one: any[] = [];
     let temp_list_two: any[] = []
-    for (let i = 0; i <= this.r; i++) {
+    for (let i = 0; i <= this.n; i++) {
       let row_one_images = this.cardRender.getCardsbyNandR(this.n, i, this.Left_set_description).subscribe((row_one_images) => {
         for (let image of row_one_images) {
           temp_list_one.push({
