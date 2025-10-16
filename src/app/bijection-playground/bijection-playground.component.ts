@@ -62,7 +62,7 @@ export class BijectionPlaygroundComponent {
     this.Current_N = event
     console.log("N CHECKED", this.Current_N);
 
-     this.R = Array.from({length: this.Current_N}, (x,i) => i).map(Number)
+     this.R = Array.from({length: this.Current_N+1 }, (x,i) => i).map(Number)
 
 
    }
