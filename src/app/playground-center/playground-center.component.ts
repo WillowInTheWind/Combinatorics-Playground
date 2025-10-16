@@ -54,6 +54,9 @@ export class PlaygroundCenterComponent {
     // }
   }
   ngOnInit() {
+    if (this.r == -1) {
+      this.r = this.n;
+    }
     let cards = this.generate_cards_equal_n();
     this.rowonecards = cards[0]
     this.rowtwocards = cards[1]

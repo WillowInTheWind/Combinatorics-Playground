@@ -103,7 +103,7 @@ Select r
 
       </select>
 
-      <select [(ngModel)]="this.rmode">
+      <select *ngIf = "this.using_r" [(ngModel)]="this.rmode">
         <option value="equal">All Cards with r = {{ Current_R}}</option>
 
         <option value="less">All Cards with r <= {{ Current_R}}</option>
