@@ -1,0 +1,77 @@
+<div class = "titlepage">
+  <a href = "/" class = "title">COMBINATORICS PLAYGROUND WORKING TITLE</a>
+  <div class = "options">
+    <a href="/bijection"  class = "option">
+      BIJECTIONS
+    </a>
+    <a href = "/random" class = "option">
+      RANDOM EXAMPLE
+    </a>
+    <a class = "option">
+      FREE EXPLORATION
+    </a>
+    <a class = "option">
+      DATABASE
+    </a>
+  </div>
+</div>
+
+
+
+<div class = "Playgroundplanner">
+  <div class = "groupselectors">
+    <div>
+      <select (ngModelChange)="onobjectSelectChange($event)" [(ngModel)] = "this.set_description" class="objectdropdown">
+        <option disabled value="">Right Object</option>
+
+        <option
+          *ngFor="let option of set_options"
+          [value]="option">
+          <!--      [selected]="option === nrSelect"-->
+          {{ option }}
+        </option>
+
+      </select></div>
+  </div>
+  <div class = "Numbers">
+    <div class = "number"> N =
+      <select (ngModelChange)="onNSelectChange($event)" [(ngModel)] = "this.n_bottom" class="numberdropdown">
+        <option
+          *ngFor="let option of N"
+          [value]="option">
+          <!--      [selected]="option === nrSelect"-->
+          {{ option }}
+        </option>
+
+
+      </select>-
+      <select (ngModelChange)="onNSelectChange($event)" [(ngModel)] = "this.n_top" class="numberdropdown">
+        <option
+          *ngFor="let option of N"
+          [value]="option">
+          <!--      [selected]="option === nrSelect"-->
+          {{ option }}
+        </option>
+
+
+      </select>
+    </div>
+
+    <!--    </div>-->
+    <div class = "rselector">
+      <input [(ngModel)]="this.using_r" type="checkbox" class = "checkbox" name = "r">
+      Select r
+    </div>
+
+  </div>
+
+  <button (click)="generateRandomElement()">
+    Generate
+  </button>
+</div>
+
+<div class = "imagewrapper">
+
+  <img *ngIf = "this.graphic" class = "objectimage" [src]='this.graphic'  alt=""/>
+
+</div>
