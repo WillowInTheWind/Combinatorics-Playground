@@ -4,8 +4,8 @@
     <a href="/bijection"  class = "option">
       BIJECTIONS
     </a>
-    <a href = "/random" class = "option">
-      RANDOM EXAMPLE
+    <a href = "/sorting" class = "option">
+      SORTING
     </a>
     <a class = "option">
       FREE EXPLORATION
@@ -27,22 +27,10 @@
   <div class = "selectors">
 
 </div>
-
+<div>
   <div class = "Playgroundplanner">
     <div class = "groupselectors">
-      <select (ngModelChange)="onclassSelectChange($event)" [(ngModel)] = "this.class" class="classdropdown">
-        <option disabled value="">--Select Combinatorial Class--</option>
-
-        <option
-          *ngFor="let option of class_options"
-          [value]="option">
-          <!--      [selected]="option === nrSelect"-->
-          {{ option }}
-        </option>
-
-      </select>
-      <div>
-        <select  *ngIf = "class" (ngModelChange)="onleftobjectSelectChange($event)" [(ngModel)] = "this.Left_set_description" class="objectdropdown">
+       <select   (ngModelChange)="onleftobjectSelectChange($event)" [(ngModel)] = "this.Left_set_description" class="objectdropdown">
           <option disabled value="">Left Object</option>
           <option
           *ngFor="let option of Set_options"
@@ -53,7 +41,7 @@
 
       </select></div>
       <div>
-      <select *ngIf = "class"  (ngModelChange)="onrightobjectSelectChange($event)" [(ngModel)] = "this.Right_set_description" class="objectdropdown">
+      <select   (ngModelChange)="onrightobjectSelectChange($event)" [(ngModel)] = "this.Right_set_description" class="objectdropdown">
         <option disabled value="">Right Object</option>
 
         <option
@@ -66,10 +54,10 @@
       </select></div>
     </div>
     <div class = "Numbers">
-      <div class = "number"> N =
-        <select (ngModelChange)="onNSelectChange($event)" [(ngModel)] = "this.Current_N" class="numberdropdown">
+      <div class = "number"> Number of cards:
+        <select (ngModelChange)="onKSelectChange($event)" [(ngModel)] = "this.Current_K" class="numberdropdown">
           <option
-            *ngFor="let option of N"
+            *ngFor="let option of Ks"
             [value]="option">
             <!--      [selected]="option === nrSelect"-->
             {{ option }}
@@ -78,45 +66,13 @@
 
         </select>
       </div>
-      <!--    </div>-->
-      <div class = "rselector">
-      <input [(ngModel)]="this.using_r" type="checkbox" class = "checkbox" name = "r">
-Select r
-      </div>
-      <div *ngIf = "using_r" class = "number"> R  =
-        <select class="numberdropdown" [(ngModel)]="Current_R">
-        <option
-          *ngFor="let option of R"
-
-          [value]="option">
-          <!--      [selected]="option === nrSelect"-->
-          {{ option }}
-        </option>
-      </select>
-      </div>
     </div>
-    <div class = "buttons">
-      <select [(ngModel)]="this.nmode">
-        <option value="equal">All Cards with n = {{ Current_N}}</option>
 
-        <option value="less" >All Cards with n <= {{ Current_N}}</option>
-
-      </select>
-
-      <select *ngIf = "this.using_r" [(ngModel)]="this.rmode">
-        <option value="equal">All Cards with r = {{ Current_R}}</option>
-
-        <option value="less">All Cards with r <= {{ Current_R}}</option>
-
-      </select>
-    </div>
     <button (click)="generate_playground_canvas()">
       Generate
     </button>
   </div>
 
-  <div #playgroundhost>
 
-  </div>
 
 </div>

@@ -24,7 +24,6 @@ declare var LeaderLine: any;
   selector: 'app-bijection-playground',
   standalone: true,
   imports: [
-    ObjectCardComponent,
     NgForOf,
     MatFormFieldModule,
     MatSelectModule,
@@ -35,8 +34,8 @@ declare var LeaderLine: any;
 })
 export class BijectionPlaygroundComponent {
   N_MAX :number = 7;
-  Current_N !: number;
-  Current_R !: number;
+  Ks = [10,20,50];
+  Current_K !: number;
   @ViewChild('playgroundhost', { read: ViewContainerRef, static: true }) container!: ViewContainerRef;
 
   nmode :string = 'equal';
@@ -44,10 +43,7 @@ export class BijectionPlaygroundComponent {
   N = Array.from({length: this.N_MAX}, (x, i) => i)
   R = Array.from({length: this.N_MAX}, (x, i) => i)
 
-
-  class = "";
-  class_options = ["Narayana", "Binomial Coefficent"]
-  Set_options: string[] =  ["pixelstrips", "starfolkspaths"];
+  Set_options: string[] =  ["fullparentheses", "dyckpaths","pixelstrips", "starfolkspaths"];
   Left_set_description = "";
   Right_set_description = "";
 
@@ -58,23 +54,10 @@ export class BijectionPlaygroundComponent {
 
   }
 
-   onNSelectChange(event:any) {
-    this.Current_N = event
-    console.log("N CHECKED", this.Current_N);
-
-     this.R = Array.from({length: this.Current_N+1 }, (x,i) => i).map(Number)
-
-
+   onKSelectChange(event:any) {
+    this.Current_K = event
    }
-  onclassSelectChange(event:any) {
-    this.class = event
-    switch (this.class) {
 
-      case "Narayana":this.Set_options = ["fullparentheses", "dyckpaths"];break;
-      case "Binomial Coefficent":this.Set_options = ["pixelstrips", "starfolkspaths"];break;
-      default:this.Set_options = ["No class selected"];break;}
-    this.class = event
-  }
   onleftobjectSelectChange(event:any) {
     this.Left_set_description = event
 
@@ -88,11 +71,9 @@ export class BijectionPlaygroundComponent {
   generate_playground_canvas () {
     this.viewContainerRef.clear()
     const component = this.viewContainerRef.createComponent(PlaygroundCenterComponent);
-    component.instance.n = this.Current_N;
-    component.instance.r = this.using_r ? -1 : this.Current_R;
+    component.instance.k = this.Current_K;
     component.instance.Left_set_description = this.Left_set_description;
     component.instance.Right_set_description = this.Right_set_description;
-    component.instance.mode = [this.nmode,this.using_r ? this.rmode : "less"];
   }
   using_r: any;
 }
