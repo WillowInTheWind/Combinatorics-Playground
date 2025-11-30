@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import {LatexRendererComponent} from "../latex-renderer/latex-renderer.component";
 import {TikzRendererComponent} from "../tikz-renderer/tikz-renderer.component";
-import {CdkDrag} from '@angular/cdk/drag-drop';
+import {CdkDrag, CdkDragEnd, DragDrop, DragRef} from '@angular/cdk/drag-drop';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {DOCUMENT, NgOptimizedImage} from "@angular/common";
 import { EventEmitter } from '@angular/core';
@@ -19,7 +19,7 @@ import {MatIcon, MatIconModule} from "@angular/material/icon";
 import {SafeUrl} from "@angular/platform-browser";
 import {MatDialog} from "@angular/material/dialog";
 import {ImagemodalComponent} from "../imagemodal/imagemodal.component";
-
+import {CardManagerService, Pose2d} from "../cardmanager.service"
 @Component({
   selector: 'app-object-card',
   standalone: true,
@@ -28,7 +28,6 @@ import {ImagemodalComponent} from "../imagemodal/imagemodal.component";
     // TikzRendererComponent,
     DragDropModule,
     CdkDrag,
-    TikzRendererComponent,
     NgOptimizedImage,
     MatIcon,MatIconModule
   ],
@@ -48,7 +47,7 @@ export class ObjectCardComponent {
   @Output() public object = new EventEmitter<any>();
   @Output() public deselectobject = new EventEmitter<any>();
 
-  dragPosition = {x: 0, y: 0};
+  dragPosition: Pose2d = {x: 0, y: 0};
   line: any|undefined;
   divColor = "white";
   selected  = false;
@@ -56,12 +55,27 @@ export class ObjectCardComponent {
 
   constructor(private ref: ElementRef,private renderer2: Renderer2,
               @Inject(DOCUMENT) private document: Document,
+              protected card_manager: CardManagerService
               ) {
     // @ts-ignore
       this.listposition = 0;
   }
+  // DragEnd() {
+  //   this.dragPosition.x = this.dragref.getFreeDragPosition().x ;
+  //   this.dragPosition.y = this.dragref.getFreeDragPosition().y ;
+  // }
+
+  public dragEnd(event: CdkDragEnd): void {
+    this.dragPosition = (event.source.getFreeDragPosition()); // returns { x: 0, y: 0 }
+    //@ts-ignore
+
+
+  }
   ngOnInit() {
       this.dragPosition = {x: this.dragPosition.x, y: this.dragPosition.y + .01};
+    console.log(this.objectInfo);
+//@ts-ignore
+    this.card_manager.updatePosition(this.objectInfo.id, this.dragPosition, this.objectInfo.status);
 
   }
   openModal(): void {
@@ -69,6 +83,8 @@ export class ObjectCardComponent {
       width: '1000px',
       data: {
         graphic: this.graphic,
+        n: this.objectInfo.n,
+        r: this.objectInfo.r
       },
     });
   }

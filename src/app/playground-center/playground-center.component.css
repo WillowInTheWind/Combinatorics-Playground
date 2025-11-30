@@ -6,6 +6,7 @@
   outline: black solid 2px;
   border-radius: 10px;
   padding:5px;
+  max-height: 3100px;
   background-image: url("https://files.123freevectors.com/wp-content/original/165818-chalkboard-background.jpg");
 }
 .page {
@@ -21,6 +22,17 @@
 .objectwrapper {
   display: flex;
   flex-direction: column;
+  max-height: 3000px;
+  flex-wrap: wrap;
+}
+.objectwrapperright {
+  display: flex;
+  flex-direction: column;
+  max-height: 3000px;
+  flex-wrap: wrap-reverse;
+}
+#leftcolumn {
+  justify-content: right;
 }
 #objectclass2 {
   display: flex;

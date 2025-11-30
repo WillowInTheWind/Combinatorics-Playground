@@ -35,7 +35,7 @@ declare var LeaderLine: any;
 export class BijectionPlaygroundComponent {
   N_MAX :number = 7;
   Ks = [10,20,50];
-  Current_K !: number;
+  Current_K : number = 10;
   @ViewChild('playgroundhost', { read: ViewContainerRef, static: true }) container!: ViewContainerRef;
 
   nmode :string = 'equal';
@@ -43,9 +43,9 @@ export class BijectionPlaygroundComponent {
   N = Array.from({length: this.N_MAX}, (x, i) => i)
   R = Array.from({length: this.N_MAX}, (x, i) => i)
 
-  Set_options: string[] =  ["fullparentheses", "dyckpaths","pixelstrips", "starfolkspaths"];
-  Left_set_description = "";
-  Right_set_description = "";
+  Set_options: string[] =  ["fullparentheses", "domino_tiling", "dyckpaths","pixelstrips", "starfolkspaths"];
+  Left_set_description = "fullparentheses";
+  Right_set_description = "fullparentheses";
 
 
   constructor(private renderer2: Renderer2,

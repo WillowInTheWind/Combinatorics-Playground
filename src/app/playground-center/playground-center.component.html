@@ -9,6 +9,7 @@
         [id]  ="'oneid-' + card.id"
         (object)="cardSelected($event)"
         [index] = "card.id"
+
         [graphic] = "card.graphic" ></app-object-card>
     </ul>
   </div>
@@ -19,7 +20,7 @@
     <div #rightmiddlecolumn  id ='rightmiddlecolumn' class = "right objectwrapper column"></div>
   </div>
 
-  <div  class = "objectwrapper">
+  <div  class = "objectwrapperright">
     <ul id = "rightcolumn" class = "styless" *ngFor="let card of rowtwocards">
       <app-object-card
         [listposition] = "1"
@@ -27,7 +28,9 @@
         [id]  ="'twoid-' + card.id"
         (object)="cardSelected($event)"
         [index] = "card.id"
+
         [graphic] = "card.graphic" ></app-object-card>
     </ul>
   </div>
 </div>
+<button (click) = "click()">button</button>
