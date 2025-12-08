@@ -8,7 +8,7 @@ export class CardManagerService {
   positionsSubject : Subject<any> = new Subject<any>();
 
   public positions: Map<number, Map<number, Pose2d>> = new Map();
-  THRESHOLD: number = 100**2;
+  THRESHOLD: number = 35994;
   constructor() {
       this.positions.set(0, new Map());
       this.positions.set(1, new Map());
@@ -18,13 +18,13 @@ export class CardManagerService {
     let searchable_positions = this.positions.get((position+1)%2)
     if (searchable_positions == undefined){
       return -1;}
-    let k = 0
+    let k = -1
     for (let [index, position] of searchable_positions) {
         if (this.getSquareDistance(pose, position) <= this.THRESHOLD) {
           k = index;
           break;
         }
-    };
+    }
     return k
   }
 

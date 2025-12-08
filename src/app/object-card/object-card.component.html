@@ -1,6 +1,7 @@
 <!--<app-tikz-renderer [style.background-color]="divColor" class = "mxitem case" #renderer cdkDragBoundary = ".wrapper" [cdkDragFreeDragPosition]="dragPosition"    [index]="index" [graphic]="graphic" cdkDrag></app-tikz-renderer>-->
 <div [style.background-color]="divColor"     class = "mxitem case"
      (cdkDragMoved)="linemanager()"
+     [style.box-shadow-color]="outline"
      (cdkDragEnded)="dragEnd($event)"
      cdkDragBoundary = ".wrapper"
   [cdkDragFreeDragPosition]="dragPosition"
@@ -8,14 +9,13 @@
   cdkDrag
 >
   <button (click) = "this.openModal()" class = "icon"><mat-icon aria-hidden="false" fontIcon="menu"></mat-icon></button>
-  <button class = "image" (click) = "selectCard()" >
+<!--  <button class = "image" (click) = "selectCard()" >-->
     <img class = "objectimage" [src]='graphic'  alt=""/>
-  </button>
+<!--  </button>-->
   <div> {{this.dragPosition.x}}, {{this.dragPosition.y}}</div>
 <!--  <div #testspace> N: {{this.objectInfo.n}} </div>-->
 <!--  <div #testspace> R: {{this.objectInfo.n}} </div>-->
-
-<!--    <img src="" height="25" alt="">-->
+  <!--    <img src="" height="25" alt="">-->
+{{this.objectInfo.id}}
 </div>
-
 

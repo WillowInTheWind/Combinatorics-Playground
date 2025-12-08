@@ -39,12 +39,10 @@ export class PlaygroundCenterComponent {
     if ($event == 0 || $event[1].status % 10 == this.firstSelected.status % 10 || $event[1] == this.firstSelected[1]) {
       return;
     }
-    console.log(this.firstSelected[0].nativeElement);
     this.secondSelected = $event;
     this.secondSelected[0].dragPosition = {x: 0 , y: 0};
     let refrence = this.leftcenter.nativeElement.append(this.firstSelected[0].nativeElement)
     this.rightcenter.nativeElement.append(this.secondSelected[0].nativeElement);
-    console.log(this.firstSelected[0].nativeElement.objectInfo)
     this.firstSelected = undefined;
     this.secondSelected = undefined;
   }
@@ -74,8 +72,7 @@ export class PlaygroundCenterComponent {
     let temp_list_one: any[] = [];
     let temp_list_two: any[] = []
     let row_one_images = this.cardRender.getCardsbyFixedTotal(this.k, this.Left_set_description).subscribe(images => {
-      console.log(typeof(images));
-      console.log(images);
+
       for (let image of images) {
         temp_list_one.push({
           status: 10,
@@ -83,6 +80,7 @@ export class PlaygroundCenterComponent {
           graphic: this.sanitizer.bypassSecurityTrustUrl('data:image/png;base64,' +image.graphic),
           id: image.id,
           n: image.n,
+          drag_position: {x: 0, y: 0},
           r: image.r,
         })
       }
@@ -93,8 +91,7 @@ export class PlaygroundCenterComponent {
       this.rowonecards = temp_list_one;
     })
     let row_two_images = this.cardRender.getCardsbyFixedTotal(this.k, this.Right_set_description).subscribe(images => {
-      console.log(typeof(images));
-      console.log(images);
+
       for (let image of images) {
         temp_list_two.push({
           status: 11,
@@ -116,5 +113,4 @@ export class PlaygroundCenterComponent {
 
 
   protected readonly Array = Array;
-  protected readonly console = console;
 }

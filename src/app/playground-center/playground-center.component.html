@@ -1,7 +1,7 @@
 
 <div class = "wrapper">
-  <div  class = "objectwrapper">
-    <ul id = "leftcolumn" class = "styless" *ngFor="let card of rowonecards ">
+<!--  <div  class = "objectwrapper">-->
+    <div id = "leftcolumn" class = "styless" *ngFor="let card of rowonecards ">
       <app-object-card
         [listposition] = "1"
         [objectInfo]="card"
@@ -11,17 +11,11 @@
         [index] = "card.id"
 
         [graphic] = "card.graphic" ></app-object-card>
-    </ul>
-  </div>
-
-  <div class = "centerstrip">
-    <div #leftmiddlecolumn  id = 'leftmiddlecolumn' class = "left objectwrapper column">
     </div>
-    <div #rightmiddlecolumn  id ='rightmiddlecolumn' class = "right objectwrapper column"></div>
-  </div>
+<!--  </div>-->
 
-  <div  class = "objectwrapperright">
-    <ul id = "rightcolumn" class = "styless" *ngFor="let card of rowtwocards">
+<!--  <div  class = "objectwrapperright">-->
+    <div id = "rightcolumn" class = "styless" *ngFor="let card of rowtwocards">
       <app-object-card
         [listposition] = "1"
         [objectInfo]="card"
@@ -30,7 +24,7 @@
         [index] = "card.id"
 
         [graphic] = "card.graphic" ></app-object-card>
-    </ul>
-  </div>
+    </div>
+<!--  </div>-->
 </div>
 <button (click) = "click()">button</button>

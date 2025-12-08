@@ -39,7 +39,7 @@ export class ObjectCardComponent {
   @Input() graphic!: SafeUrl;
   @ViewChild('renderer') button!: ElementRef;
   @ViewChild('testspace') test!: ElementRef;
-
+  outline = "none"
   @Input() listposition: number;
   dialog = inject(MatDialog);
 
@@ -57,26 +57,38 @@ export class ObjectCardComponent {
               @Inject(DOCUMENT) private document: Document,
               protected card_manager: CardManagerService
               ) {
-    // @ts-ignore
       this.listposition = 0;
   }
-  // DragEnd() {
-  //   this.dragPosition.x = this.dragref.getFreeDragPosition().x ;
-  //   this.dragPosition.y = this.dragref.getFreeDragPosition().y ;
-  // }
+
 
   public dragEnd(event: CdkDragEnd): void {
     this.dragPosition = (event.source.getFreeDragPosition()); // returns { x: 0, y: 0 }
-    //@ts-ignore
+    this.card_manager.updatePosition(this.objectInfo.id, this.dragPosition, this.objectInfo.status);
 
 
   }
   ngOnInit() {
-      this.dragPosition = {x: this.dragPosition.x, y: this.dragPosition.y + .01};
-    console.log(this.objectInfo);
 //@ts-ignore
+    this.dragPosition = {x: (this.objectInfo.status%10)*(window.innerWidth-150), y: this.objectInfo.id*150};
+
     this.card_manager.updatePosition(this.objectInfo.id, this.dragPosition, this.objectInfo.status);
 
+  }
+  ngAfterViewInit() {
+    this.card_manager.positionsSubject.subscribe((data) => {
+      this.checkforclosecard(data);
+    })
+  }
+  checkforclosecard (data: any) {
+    let k = this.card_manager.checkforclosecard(this.dragPosition, this.objectInfo.status);
+    if (k != -1) {
+      console.log(k);
+      this.divColor = "blue";
+    }
+    if (k == -1) {
+      console.log(k);
+
+    }
   }
   openModal(): void {
     this.dialog.open(ImagemodalComponent, {
@@ -89,9 +101,7 @@ export class ObjectCardComponent {
     });
   }
   selectCard() :void {
-    console.log(this.ref.nativeElement.parentElement.id)
     if (this.ref.nativeElement.parentElement.id == "rightmiddlecolumn" || this.ref.nativeElement.parentElement.id == "leftmiddlecolumn") {
-      console.log("MIDDLE COLUMN SELECTED");
       return;
     }
     if (!this.selected ) {
@@ -99,7 +109,6 @@ export class ObjectCardComponent {
       this.selected = true;
       this.dragPosition = {x: 0, y: 0};
       this.object.emit([this.ref, this.objectInfo]);
-      // this.objectInfo.status = 12;
     }
     else {
       this.selected = false;
@@ -113,9 +122,6 @@ export class ObjectCardComponent {
       console.log("test");
     }
   }
-//   ngOnChanges(changes: SimpleChanges) {
-//     this.test.nativeElement.text = this.objectInfo.id;
-// }
 
   returnData () {
     return this.objectInfo
